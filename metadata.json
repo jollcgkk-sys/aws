@@ -1,0 +1,5 @@
+{
+  "name": "Study Planner",
+  "description": "A multi-user Arabic study planner with offline support.",
+  "requestFramePermissions": []
+}

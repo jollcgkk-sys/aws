@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  /* Default Theme (Light) */
+  --bg: #f8fafc;
+  --bg2: #ffffff;
+  --card: #ffffff;
+  --surface: #f1f5f9;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --input-bg: #ffffff;
+  --input-text: #0f172a;
+  --input-border: #e2e8f0;
+  --placeholder: #94a3b8;
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+[data-theme="cats_night"] {
+  /* Cats Night Theme (Dark) */
+  --bg: #0f172a;
+  --bg2: #111827;
+  --card: #1e293b;
+  --surface: #111827;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --border: #334155;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --input-bg: #1e293b;
+  --input-text: #f8fafc;
+  --input-border: #334155;
+  --placeholder: #64748b;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+  --theme-bg-image: url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=2043&auto=format&fit=crop');
+}
+
+[data-theme="pink_cute"] {
+  /* Pink Cute Theme */
+  --bg: #fff0f5;
+  --bg2: #ffe4e1;
+  --card: #fffaf0;
+  --surface: #ffe4e1;
+  --text: #4a0e2e;
+  --muted: #9d4e73;
+  --border: #ffb6c1;
+  --primary: #d81b60;
+  --primary-hover: #ad1457;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --input-bg: #ffffff;
+  --input-text: #4a0e2e;
+  --input-border: #ffb6c1;
+  --placeholder: #9d4e73;
+  --shadow: 0 4px 6px -1px rgba(216, 27, 96, 0.15), 0 2px 4px -2px rgba(216, 27, 96, 0.15);
+  --theme-bg-image: none;
+}
+
+[data-theme="sandy_cat"] {
+  /* Sandy Cat Theme */
+  --bg: #fef3c7;
+  --bg2: #fde68a;
+  --card: #ffffff;
+  --surface: #fde68a;
+  --text: #78350f;
+  --muted: #b45309;
+  --border: #fcd34d;
+  --primary: #d97706;
+  --primary-hover: #b45309;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --input-bg: #ffffff;
+  --input-text: #78350f;
+  --input-border: #fcd34d;
+  --placeholder: #b45309;
+  --shadow: 0 4px 6px -1px rgb(217 119 6 / 0.1), 0 2px 4px -2px rgb(217 119 6 / 0.1);
+  --theme-bg-image: url('https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=1935&auto=format&fit=crop');
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+/* Global transitions for theme elements */
+.theme-transition {
+  transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+}
+
+/* Theme Background Overlay */
+.theme-bg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--theme-bg-image);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  pointer-events: none;
+  transition: opacity 250ms ease, background-image 250ms ease;
+}
+
+[data-theme="default"] .theme-bg-overlay {
+  opacity: 0;
+}
+
+/* Pink Cute Theme Overrides */
+[data-theme="pink_cute"] .theme-bg-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d81b60' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100px;
+  opacity: 1;
+}
+
+[data-theme="pink_cute"] .border-\\[var\\(--border\\)\\] {
+  border-style: dashed;
+  border-width: 2px;
+}
+
+[data-theme="pink_cute"] .bg-\\[var\\(--primary\\)\\] {
+  background-image: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+  box-shadow: 0 4px 10px rgba(216, 27, 96, 0.25);
+}
+
+/* Global Animations */
+button {
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.reduce-motion * {
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+@media (max-width: 768px) {
+  .theme-bg-overlay {
+    opacity: 0.05 !important;
+  }
+}
+
+/* Fix for time/number inputs in Cats Night theme */
+[data-theme="cats_night"] input[type="time"],
+[data-theme="cats_night"] input[type="number"] {
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  border-color: var(--input-border);
+  color-scheme: dark;
+}
+
+[data-theme="cats_night"] select option {
+  background-color: var(--input-bg);
+  color: var(--input-text);
+}
+
+[data-theme="cats_night"] input[type="time"]::placeholder,
+[data-theme="cats_night"] input[type="number"]::placeholder {
+  color: var(--placeholder);
+}
+
+[data-theme="cats_night"] input[type="time"]:focus,
+[data-theme="cats_night"] input[type="number"]:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+[data-theme="cats_night"] input[type="time"]::selection,
+[data-theme="cats_night"] input[type="number"]::selection {
+  background-color: var(--primary);
+  color: var(--text);
+}
+
+[data-theme="cats_night"] input[type="time"]:disabled,
+[data-theme="cats_night"] input[type="number"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
